@@ -23,6 +23,7 @@ header {
 	width: 100%;
 	background:rgba(255,255,255,0.0);
 	border-bottom: 1px solid #5E271A;
+	text-decoration:none;
 }
 .logo {
 	color: #fff;
