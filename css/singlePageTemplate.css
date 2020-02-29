@@ -4,6 +4,7 @@
   src: url('../fonts/Makinas-4-Flat.woff') format("woff"),
          url('../fonts/Makinas-4-Flat.ttf') format("truetype"),
          url('../fonts/Makinas-4-Flat.eot') format("embedded-opentype");
+	unicode-range: U+000-5FF, U+1e00-1fff, U+2000-2300, U+3000-9FFF, U+ff??;
 }
 /* Body */
 body {
