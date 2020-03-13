@@ -1,14 +1,22 @@
 @charset "UTF-8";
+
 @font-face {
-  font-family: 'Makinas-4-Flat';
+  font-family: 'MyFont';
   src: url('../fonts/Makinas-4-Flat.woff') format("woff"),
          url('../fonts/Makinas-4-Flat.ttf') format("truetype"),
          url('../fonts/Makinas-4-Flat.eot') format("embedded-opentype");
-	unicode-range: U+000-5FF, U+1e00-1fff, U+2000-2300, U+3000-9FFF, U+ff??;
+	unicode-range: U+00-024F, U+3040-30FF;
+}
+@font-face {
+  font-family: 'MyFont';
+  src: url('../fonts/sarasa-gothic-tc-regular.woff') format("woff"),
+         url('../fonts/sarasa-gothic-tc-regular.ttf') format("truetype"),
+         url('../fonts/sarasa-gothic-tc-regular.eot') format("embedded-opentype");
+	unicode-range: U+4E00-9FFF;
 }
 /* Body */
 body {
-	font-family: Makinas-4-Flat;
+	font-family: MyFont;
 	background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
 	margin-top: 0px;
 	margin-right: 0px;
@@ -45,34 +53,106 @@ header {
 nav {
 	float: right;
 	width: 50%;
-	text-align: right;
+	text-align: center;
 	margin-right: 25px;
 }
 header nav ul {
 	list-style: none;
-	float: right;
+	float: center;
 }
 nav ul li {
 	float: left;
 	color: #DB2A2A;
 	font-size: 14px;
 	text-align: left;
-	margin-right: 25px;
+	margin-right: 0px;
 	letter-spacing: 2px;
 	font-weight: bold;
 	transition: all 0.3s linear;
 }
-ul li a {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+/*ul li a {
 	color: #C83C3C;
 	text-decoration: none;
 }
 ul li:hover a {
 	color: #2C9AB7;
-}
+}*/
+ ul { 
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    ul.drop-down-menu {
+        border: #000000 1px solid;
+        display: inline-block;
+    }
+    ul.drop-down-menu li {
+        position: relative;
+        white-space: nowrap;
+        border-right: #ccc 1px solid;
+    }
+    ul.drop-down-menu > li:last-child {
+        border-right: none;
+    }
+    ul.drop-down-menu > li {
+        float: left; /* 只有第一層是靠左對齊*/
+    }
+     ul.drop-down-menu a {
+        background-color: rgba(255,255,255,0.2);
+        color: #C83C3C;
+        display: block;
+        padding: 0 30px;
+        text-decoration: none;
+        line-height: 40px;
 
+    }
+    ul.drop-down-menu a:hover { /* 滑鼠滑入按鈕變色*/
+        background-color: #ef5c28;
+        color: #fff;
+    }
+    ul.drop-down-menu li:hover > a { /* 滑鼠移入次選單上層按鈕保持變色*/
+        background-color: #AC261E;
+        color: #fff;
+    }
+  ul.drop-down-menu ul {
+        border: #ccc 1px solid;
+        position: absolute;
+        z-index: 99;
+        left: -1px;
+        top: 100%;
+       min-width: 180px;
+    }
+    ul.drop-down-menu ul li {
+        border-bottom: #ccc 1px solid;
+    }
+    ul.drop-down-menu ul li:last-child {
+        border-bottom: none;
+    }
+    ul.drop-down-menu ul ul { /*第三層以後的選單出現位置與第二層不同*/
+        z-index: 999;
+        top: 10px;
+        left: 90%;
+    }
+  ul.drop-down-menu ul { /*隱藏次選單*/
+	    left: -1010px;
+        opacity: 0;
+	    -webkit-transition: opacity 0.3s;
+	    transition: opacity 0.3s;
+    }
+    ul.drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
+		
+		opacity: 1;
+		-webkit-transition: opacity 0.3s;
+		transition: opacity 0.3s;
+		left: -1px;
+		border-right: 5px;
+    }
+    ul.drop-down-menu li:hover > ul ul { /* 滑鼠滑入之後、次選單之後的選單依舊隱藏*/
+        left: -1010px;
+    }
+    ul.drop-down-menu ul li:hover > ul { /* 第二層之後的選單展開位置*/
+        left: 90%;
+    }
 
 .hero_header {
 	color: #FFFFFF;
