@@ -32,7 +32,7 @@ body {
 	background:rgba(255,255,255,0.75);
 	margin-left: auto;
 	margin-right: auto;
-	height: 1000px;
+	height: auto;
 }
 /* Navigation */
 header {
@@ -154,6 +154,30 @@ ul li:hover a {
     ul.drop-down-menu ul li:hover > ul { /* 第二層之後的選單展開位置*/
         left: 90%;
     }
+  .vpage {
+    padding: .85rem;
+    user-select: none;
+
+    .page-numbers {
+      display: inline-block;
+      padding: 0 8px;
+      color: #828586;
+      cursor: pointer;
+    }
+
+    .page-numbers.current {
+      border-radius: 50%;
+      background: #ebebeb;
+      min-width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: #c1c1c1;
+      font-size: 15px;
+      cursor: default;
+    }
+
+  }
 
 .hero_header {
 	color: #FFFFFF;
