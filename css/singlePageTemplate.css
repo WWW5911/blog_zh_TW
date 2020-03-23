@@ -91,6 +91,7 @@ ul li:hover a {
         position: relative;
         white-space: nowrap;
         border-right: #ccc 1px solid;
+	width:auto;
     }
     ul.drop-down-menu > li:last-child {
         border-right: none;
