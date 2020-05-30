@@ -7,14 +7,17 @@ var reTO = document.getElementsByClassName("vhead");
 var email;
 var now_tagging;
 var index = -1;
-
+var flagg = 0;
 var btn ;
+var kk;
 setTimeout("btn2f()", 1000);
 function btnf(){
   btn = document.getElementsByClassName("vsubmit vbtn");
   btn[0].onclick= function() {
     if(email != undefined){
-      emailsend();
+      if (typeof kk != "undefined" && kk != null && kk.length != null && kk.length > 0) 
+        kk[0].meme = 1;
+      setTimeout("emailsend()", 1500);
       myLoop();
     }
     myLoop2();
@@ -27,14 +30,16 @@ function btn2f(){
   btn2 = document.getElementsByClassName("vsure vbtn");
   if (typeof btn2 != "undefined" && btn2 != null && btn2.length != null && btn2.length > 0) 
   btn2[0].onclick= function() {
+    setTimeout("set0()", 1550);
     if(email != undefined)
-    emailsend();
+      setTimeout("emailsend()", 1700);
   }
 }
 
 
 var Email = { send: function (a) { return new Promise(function (n, e) { a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send"; var t = JSON.stringify(a); Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) { n(e) }) }) }, ajaxPost: function (e, n, t) { var a = Email.createCORSRequest("POST", e); a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () { var e = a.responseText; null != t && t(e) }, a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); t.onload = function () { var e = t.responseText; null != n && n(e) }, t.send() }, createCORSRequest: function (e, n) { var t = new XMLHttpRequest; return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t } };
 function emailsend(){
+  if(flagg == 0 ||  kk[0].meme == 1)
     Email.send({
         SecureToken : "68a7986c-5829-42ce-9458-a552df2f9276",
         To : email,  
@@ -83,8 +88,19 @@ myLoop();
 function myLoop2() {         
   setTimeout(function() {   
     btn2 = document.getElementsByClassName("vsure vbtn");
+    var can = document.getElementsByClassName("vcancel vbtn");
+    if (typeof can != "undefined" && can != null && can.length != null && can.length > 0) {          
+      flagg = 1;
+      setTimeout("set0()", 1000);
+    }
     if (typeof btn2 != "undefined" && btn2 != null && btn2.length != null && btn2.length > 0) {          
       btn2f();
+      kk = document.getElementsByClassName("valert txt-center");
+      flagg = 1;
+      setTimeout("set0()", 1000);
     }else{myLoop2();}                     
   }, 1000)
+}
+function set0(){
+  flagg = 0;
 }
