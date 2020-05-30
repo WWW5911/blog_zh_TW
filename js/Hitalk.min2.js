@@ -14,7 +14,7 @@ var btn = document.getElementsByClassName("vsubmit vbtn");
 
 btn[0].onclick= function() {
  // emailsend();
-  console.log(c.comment);
+  alert(c.comment);
   setTimeout("btn2f()", 1000);
   
 }
@@ -23,7 +23,7 @@ var btn2;
 function btn2f(){
   btn2 = document.getElementsByClassName("vsure vbtn");
   btn2[0].onclick= function() {
-    console.log("c.comment");
+    alert("c.comment");
     //emailsend();
   }
 }
