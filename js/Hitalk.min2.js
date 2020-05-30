@@ -2,29 +2,33 @@
 //# sourceMappingURL=Hitalk.min.js.map
 
 var re = document.getElementsByClassName("vat");
+var mk = document.getElementsByClassName("col");
+var reTO = document.getElementsByClassName("vhead");
 var email;
 var now_tagging;
-for(i = 0; i < re.length; ++i){
-  re[i].onclick = function() {
-    email = this.outerHTML.substring(this.outerHTML.indexOf("mail")+6, this.outerHTML.indexOf(" class")-1);
-    now_tagging = re[i];
-  }
-}
-var btn = document.getElementsByClassName("vsubmit vbtn");
+var index = -1;
 
-btn[0].onclick= function() {
- // emailsend();
-  alert(c.comment);
-  setTimeout("btn2f()", 1000);
+var btn ;
+setTimeout("btn2f()", 1000);
+function btnf(){
+  btn = document.getElementsByClassName("vsubmit vbtn");
+  btn[0].onclick= function() {
+    if(email != undefined){
+      emailsend();
+      myLoop();
+    }
+    myLoop2();
   
+}
 }
 var btn2;
  
 function btn2f(){
   btn2 = document.getElementsByClassName("vsure vbtn");
+  if (typeof btn2 != "undefined" && btn2 != null && btn2.length != null && btn2.length > 0) 
   btn2[0].onclick= function() {
-    alert("c.comment");
-    //emailsend();
+    if(email != undefined)
+    emailsend();
   }
 }
 
@@ -33,10 +37,54 @@ var Email = { send: function (a) { return new Promise(function (n, e) { a.nocach
 function emailsend(){
     Email.send({
         SecureToken : "68a7986c-5829-42ce-9458-a552df2f9276",
-        To : email,  /*填入你的EMAIL，寄信是用禾的GMAIL母咪*/
-        From : "astria@astriaworks.moe",
+        To : email,  
+        From : "Astria@astriaworks.moe",
         Subject : "有人在集櫻狂咲的留言板回復你摟",
         Body : "有人在集櫻狂咲 https://astriaworks.moe/message ，的留言板中，回復了你的留言。"
     }).then(
     );
+}
+function myLoop() {         
+  setTimeout(function() {   
+    var temp = 0;
+    btn = document.getElementsByClassName("vsubmit vbtn");
+    re = document.getElementsByClassName("vat");
+    mk = document.getElementsByClassName("col");
+    reTO = document.getElementsByClassName("vhead");
+    if (typeof btn != "undefined" && btn != null && btn.length != null && btn.length > 0) {          
+      btnf();
+      temp++;
+    }
+    if(typeof re != "undefined" && re != null && re.length != null && re.length > 0){
+      temp++;
+      for(i = 0; i < re.length; ++i){
+        re[i].onclick = function() {
+          email = this.outerHTML.substring(this.outerHTML.indexOf("mail")+6, this.outerHTML.indexOf(" class")-1);
+          now_tagging = this;
+          index = i;
+          mk[0].textContent = ("正在回復 > " + this.previousElementSibling.offsetParent.previousElementSibling.previousElementSibling.getElementsByTagName("a")[0].textContent +" 點此取消");
+        }
+      }
+    }
+    if(typeof mk != "undefined" && mk != null && mk.length != null && mk.length > 0){
+      mk[0].onclick = function(){
+        mk[0].textContent = "Hitalk"
+        email = undefined;
+      }
+      temp++;
+    }
+    if(typeof reTO != "undefined" && reTO != null && reTO.length != null && reTO.length > 0){
+      temp++;
+    }
+    if(temp < 4){myLoop();}                     
+  }, 1000)
+}
+myLoop();
+function myLoop2() {         
+  setTimeout(function() {   
+    btn2 = document.getElementsByClassName("vsure vbtn");
+    if (typeof btn2 != "undefined" && btn2 != null && btn2.length != null && btn2.length > 0) {          
+      btn2f();
+    }else{myLoop2();}                     
+  }, 1000)
 }
