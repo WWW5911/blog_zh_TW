@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link type="image/x-icon" href="images/favicon.ico" rel="icon" />
+<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
+<link type="image/x-icon" href="images/favicon.ico" rel="bookmark" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>集櫻狂咲</title>
+<link href="css/singlePageTemplate.css" rel="stylesheet" type="text/css">
+<script>var __adobewebfontsappname__="dreamweaver"</script>
+
+</head>
+<style>
+	
+	a {
+    	text-decoration:none;
+    	color:#C83C3C;
+	}
+	a:hover{
+		color:#FEABAC;  
+		text-decoration:underline;
+	}
+	.imgw{position: relative;}
+	
+</style>
+<style type="text/css">
+	nav{
+		width: 100%;
+		height: 60px;	
+		position: absolute;
+		z-index: 10;
+	}
+</style>
+<body>
+<!-- Main Container -->
+
+	
+<header>
+	<nav>
+		</br> 
+		<ul class="drop-down-menu">
+			<li><a href="https://astriaworks.moe/">Main</a>
+			</li>
+			<li><a href="about">About</a>
+			</li>
+			<li><a href="#">Works</a>
+            	<ul>
+                	<li><a href="#">ARPGs&nbsp;</a>
+                    <ul>
+                        <li><a href="#">魔法月丰大冒險</a>
+                        </li>
+					</ul>
+					</li>
+                	<li><a href="#">回合制RPG&nbsp;</a>
+                    <ul>
+                        <li><a href="Project-alphe">Project alphe</a>
+                        </li>
+					</ul>
+					</li>
+					<li><a href="#">others&nbsp;</a>
+                    <ul>
+                        <li><a href="Conway's-Game-of-Life">Conway's Game of Life</a>
+                        </li>
+					</ul>
+					</li>
+                	<li><a href="#">程式們&nbsp;</a>
+                    <ul>
+                        <li><a href="ai_topics">AI們</a>
+                        </li>
+                        <li><a  href="judge_topics">競賽類們</a>
+                        </li>
+					</ul>
+					</li>
+               </ul>
+			</li>
+			<li><a href="message">Talk</a>
+			</li>
+		</ui>
+	</nav>
+	<div class="imgw">
+		<p><a href="https://astriaworks.moe/">
+    	<img src="images/fin_logo.png"  width=auto height="80" alt=""/></a></p>
+	</div>
+</header>
+<div class="container"> 
+	&nbsp;
+<p style="text-align: center;">APCS 2020-10 實作題第三題</p>
+<p>　　問題連結：</p>
+<p>　　<a href="https://zerojudge.tw/ShowProblem?problemid=f314">https://zerojudge.tw/ShowProblem?problemid=f314</a></p>
+<p>&nbsp;</p>
+<p>　　想法：</p>
+<p>　　　　先計算第M層任何房間左右移動可獲得的最高經驗值，接著從第M-1層到第1層，</p>
+<p>　　逐次計算任何房間左右移動可獲得的最高經驗值，但須加上該路線終點房間下方房間</p>
+<p>　　可獲得的最高經驗值，算到最上層後選取最大值即為解答。</p>
+<p>&nbsp;</p>
+<table style="width: 219px; height: 188px; border-color: #000000; text-align: center;" border="1">
+<tbody>
+<tr >
+<td style="width: 209px;">0</td>
+<td style="width: 209px;">5</td>
+<td style="width: 209px;">-2</td>
+<td style="width: 209px;">1</td>
+</tr>
+<tr>
+<td style="width: 209px;">13</td>
+<td style="width: 209px;">-19</td>
+<td style="width: 209px;">3</td>
+<td style="width: 209px;">1</td>
+</tr>
+<tr>
+<td style="width: 209px;">-21</td>
+<td style="width: 209px;">17</td>
+<td style="width: 209px;">-13</td>
+<td style="width: 209px;">8</td>
+</tr>
+<tr>
+<td style="width: 209px;">0</td>
+<td style="width: 209px;">-20</td>
+<td style="width: 209px;">6</td>
+<td style="width: 209px;">19</td>
+</tr>
+<tr>
+<td style="width: 209px; text-align: center;" colspan="4">原始陣列</td>
+</tr>
+</tbody>
+</table>
+<p>　　首先計算第M層任意房間為起點，可以獲得的最高經驗值，並存在相應位置的DP陣列中</p>
+<table style="width: 219px; height: 188px; border-color: #000000; text-align: center;" border="1">
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;5&nbsp;&nbsp;</td>
+<td>5&nbsp;&nbsp;</td>
+<td>&nbsp;25</td>
+<td>&nbsp;25</td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="4">最高經驗值陣列(DP)</td>
+</tr>
+</tbody>
+</table>
+<p>　　 接著計算第M-1層，此時需要將下方房間的最大值加入考量</p>
+<p>　　 如(1,2)，其路線為(2,2)-&gt;(2,3)-&gt;(2,4)-&gt;<span style="color: #ff0000;">(3,4)</span></p>
+<table style="width: 219px; height: 188px; border-color: #000000; text-align: center;" border="1" width="223">
+<tbody>
+<tr>
+<td style="width: 51px;">40&nbsp;</td>
+<td style="width: 42px;">40&nbsp;</td>
+<td style="width: 51px;">35</td>
+<td style="width: 51px;">36</td>
+</tr>
+<tr>
+<td style="width: 51px;">29</td>
+<td style="width: 42px;">12</td>
+<td style="width: 51px;">37</td>
+<td style="width: 51px;">35</td>
+</tr>
+<tr>
+<td style="width: 51px;">&nbsp;16</td>
+<td style="width: 42px;">37</td>
+<td style="width: 51px;">20</td>
+<td style="width: 51px;">34</td>
+</tr>
+<tr>
+<td style="width: 51px;">&nbsp;5&nbsp;&nbsp;</td>
+<td style="width: 42px;">5&nbsp;&nbsp;</td>
+<td style="width: 51px;">&nbsp;25</td>
+<td style="width: 51px;">&nbsp;25</td>
+</tr>
+<tr>
+<td style="width: 213px; text-align: center;" colspan="4">最高經驗值陣列(DP)</td>
+</tr>
+</tbody>
+</table>
+<p>　　得出最後陣列後，輸出第一層出現的最大值</p>
+<p>&nbsp;</p>
+<p>　　Code:</p>
+<script src="https://gist.github.com/WWW5911/fd664ea0d2c8973c97f561434dc401f4.js"></script>
+</div>
+
+<br>
+<!-- Main Container Ends -->
+</body>
+</html>
