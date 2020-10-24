@@ -87,13 +87,13 @@
 <div class="container"> 
 	&nbsp;
 <p style="text-align: center;">APCS 2020-10 實作題第三題</p>
-<p>　　問題連結：</p>
+<p>問題連結：</p>
 <p>　　<a href="https://zerojudge.tw/ShowProblem?problemid=f314">https://zerojudge.tw/ShowProblem?problemid=f314</a></p>
 <p>&nbsp;</p>
-<p>　　想法：</p>
-<p>　　　　先計算第M層任何房間左右移動可獲得的最高經驗值，接著從第M-1層到第1層，</p>
-<p>　　逐次計算任何房間左右移動可獲得的最高經驗值，但須加上該路線終點房間下方房間</p>
-<p>　　可獲得的最高經驗值，算到最上層後選取最大值即為解答。</p>
+<p>想法：</p>
+<p>　　先計算第M層任何房間左右移動可獲得的最高經驗值，接著從第M-1層到第1層，</p>
+<p>逐次計算任何房間左右移動可獲得的最高經驗值，但須加上該路線終點房間下方房間</p>
+<p>可獲得的最高經驗值，算到最上層後選取最大值即為解答。</p>
 <p>&nbsp;</p>
 <table style="width: 219px; height: 188px; border-color: #000000; text-align: center;" border="1">
 <tbody>
@@ -126,7 +126,7 @@
 </tr>
 </tbody>
 </table>
-<p>　　首先計算第M層任意房間為起點，可以獲得的最高經驗值，並存在相應位置的DP陣列中</p>
+<p>首先計算第M層任意房間為起點，可以獲得的最高經驗值，並存在相應位置的DP陣列中</p>
 <table style="width: 219px; height: 188px; border-color: #000000; text-align: center;" border="1">
 <tbody>
 <tr>
@@ -158,8 +158,8 @@
 </tr>
 </tbody>
 </table>
-<p>　　 接著計算第M-1層，此時需要將下方房間的最大值加入考量</p>
-<p>　　 如(1,2)，其路線為(2,2)-&gt;(2,3)-&gt;(2,4)-&gt;<span style="color: #ff0000;">(3,4)</span></p>
+<p>接著計算第M-1層，此時需要將下方房間的最大值加入考量</p>
+<p>如(1,2)，其路線為(2,2)-&gt;(2,3)-&gt;(2,4)-&gt;<span style="color: #ff0000;">(3,4)</span></p>
 <table style="width: 219px; height: 188px; border-color: #000000; text-align: center;" border="1" width="223">
 <tbody>
 <tr>
@@ -191,7 +191,7 @@
 </tr>
 </tbody>
 </table>
-<p>　　得出最後陣列後，輸出第一層出現的最大值</p>
+<p>得出最後陣列後，輸出第一層出現的最大值</p>
 <p>&nbsp;</p>
 <p>　　Code:</p>
 <script src="https://gist.github.com/WWW5911/fd664ea0d2c8973c97f561434dc401f4.js"></script>
